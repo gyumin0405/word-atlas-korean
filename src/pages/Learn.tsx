@@ -64,7 +64,7 @@ function Runner({ session }: { session: ActiveSession }) {
   return (
     <div className="learn">
       <header className="learn-top">
-        <button className="icon-btn" onClick={exit} aria-label="暂停并返回">
+        <button className="icon-btn" onClick={exit} aria-label="일시 정지하고 돌아가기">
           <X size={22} />
         </button>
         <div className="learn-progress" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={session.index}>
@@ -106,15 +106,15 @@ function Intro({ step }: { step: Step }) {
   return (
     <div className="intro">
       <p className="stage-label">
-        <span className="dot dot-new" /> 初次见面
+        <span className="dot dot-new" /> 첫 만남
       </p>
       <EntryView entry={entry} mode="intro" />
       <footer className="learn-actions">
         <button className="btn btn-primary btn-xl" onClick={next} autoFocus>
-          认识了 <ArrowRight size={20} />
+          알겠어요 <ArrowRight size={20} />
         </button>
         <span className="hint-keys">
-          <kbd>Enter</kbd> 继续
+          <kbd>Enter</kbd> 계속
         </span>
       </footer>
     </div>
@@ -122,10 +122,10 @@ function Intro({ step }: { step: Step }) {
 }
 
 const KIND_LABEL: Record<QuizKind, string> = {
-  meaning: "它是什么意思？",
-  picture: "看图，补全这句话",
-  listen: "听，是哪个词？",
-  spell: "拼出这个词",
+  meaning: "무슨 뜻일까요?",
+  picture: "그림을 보고 문장을 완성하세요",
+  listen: "듣고, 어떤 단어인지 고르세요",
+  spell: "이 단어의 철자를 쓰세요",
 };
 
 function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: ActiveSession }) {
@@ -179,7 +179,7 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
     <div className={`quiz quiz-${step.kind} ${pending ? (pending.correct ? "is-right" : "is-wrong") : ""}`}>
       <p className="stage-label">
         <span className={`dot ${step.retry ? "dot-retry" : "dot-review"}`} />
-        {step.retry ? "再见一面 · " : ""}
+        {step.retry ? "다시 만남 · " : ""}
         {KIND_LABEL[step.kind]}
       </p>
 
@@ -211,12 +211,12 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
         )}
         {step.kind === "listen" && (
           <div className="prompt-listen">
-            <button className="listen-orb" onClick={() => play(atlas.audio(entry, settings.accent), entry.w, settings.accent)} aria-label="再听一遍">
+            <button className="listen-orb" onClick={() => play(atlas.audio(entry, settings.accent), entry.w, settings.accent)} aria-label="다시 듣기">
               <Volume2 size={40} strokeWidth={1.6} />
               <span />
             </button>
             <button className="link" onClick={() => play(atlas.audio(entry, settings.accent), entry.w, settings.accent, 0.7)}>
-              慢速再听
+              느리게 다시 듣기
             </button>
           </div>
         )}
@@ -235,7 +235,7 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
               <li key={o.id}>
                 <button className={`option ${cls}`} data-option={o.id} onClick={() => submit(o.id, isAnswer)} disabled={!!pending}>
                   <kbd>{i + 1}</kbd>
-                  <span lang={step.kind === "meaning" ? "zh" : "en"}>{step.kind === "meaning" ? o.zh : o.word}</span>
+                  <span lang={step.kind === "meaning" ? "ko" : "en"}>{step.kind === "meaning" ? o.zh : o.word}</span>
                   {pending && isAnswer && <Check size={20} className="option-mark" />}
                   {pending && chosen && !isAnswer && <X size={20} className="option-mark" />}
                 </button>
@@ -269,7 +269,7 @@ function SpellPrompt({ entry, refw, hints }: { entry: Entry; refw: WordRef; hint
             {sentence.after}
           </p>
         )}
-        <Speak url={atlas.audio(entry, accent)} text={entry.w} accent={accent} size="sm" label="听发音" />
+        <Speak url={atlas.audio(entry, accent)} text={entry.w} accent={accent} size="sm" label="발음 듣기" />
       </div>
     </div>
   );
@@ -315,16 +315,16 @@ function SpellInput({ entry, pending, hints, onHint, onSubmit }: { entry: Entry;
         autoComplete="off"
         spellCheck={false}
         enterKeyHint="done"
-        aria-label={`拼写，${target.length} 个字符`}
+        aria-label={`철자 입력, ${target.length}글자`}
         readOnly={!!pending}
       />
       {!pending && (
         <div className="spell-actions">
           <button type="button" className="btn btn-ghost" onClick={onHint} disabled={hints >= target.length - 1}>
-            <Lightbulb size={17} /> 提示字母
+            <Lightbulb size={17} /> 글자 힌트
           </button>
           <button type="submit" className="btn btn-primary" disabled={!value.trim()}>
-            确认 <kbd>Enter</kbd>
+            확인 <kbd>Enter</kbd>
           </button>
         </div>
       )}
@@ -341,7 +341,7 @@ function Feedback({ entry, refw, correct, onNext }: { entry: Entry; refw: WordRe
       <div className="feedback-inner">
         <Illustration src={atlas.img(entry, "thumb")} word={entry.w} topic={refw.topic} className="feedback-art" />
         <div className="feedback-text">
-          <p className="feedback-verdict">{correct ? "答对了" : "没关系，记住它"}</p>
+          <p className="feedback-verdict">{correct ? "정답이에요" : "괜찮아요, 이번에 기억해요"}</p>
           <p className="feedback-word">
             <b lang="en">{entry.w}</b>
             <span className="ipa">{entry.uk || entry.us}</span>
@@ -350,7 +350,7 @@ function Feedback({ entry, refw, correct, onNext }: { entry: Entry; refw: WordRe
             {entry.senses
               .slice(0, 2)
               .map((s) => `${s.pos} ${s.zh}`)
-              .join("　")}
+              .join(" · ")}
           </p>
           {entry.ex[0] && (
             <p className="feedback-ex" lang="en">
@@ -359,7 +359,7 @@ function Feedback({ entry, refw, correct, onNext }: { entry: Entry; refw: WordRe
           )}
         </div>
         <button ref={btn} className={`btn btn-xl ${correct ? "btn-sage" : "btn-terra"}`} onClick={onNext}>
-          继续 <ArrowRight size={20} />
+          계속 <ArrowRight size={20} />
         </button>
       </div>
     </div>
@@ -388,29 +388,29 @@ function Summary({ session }: { session: ActiveSession }) {
       <div className="summary-card">
         <div className="summary-sky">
           <Galaxy mode="mini" highlight={words.map((w) => w.id)} ignite />
-          <p>今天点亮了 {words.length} 颗星</p>
+          <p>오늘 별 {words.length}개를 밝혔어요</p>
         </div>
-        <p className="eyebrow">这一程结束了</p>
-        <h1 className="display">{stats.accuracy >= 90 ? "漂亮的一程。" : stats.accuracy >= 60 ? "稳稳向前。" : "错过的，会再相遇。"}</h1>
+        <p className="eyebrow">이번 여정이 끝났어요</p>
+        <h1 className="display">{stats.accuracy >= 90 ? "멋진 여정이었어요." : stats.accuracy >= 60 ? "차근차근 나아가고 있어요." : "놓친 단어는 다시 만나게 될 거예요."}</h1>
         <div className="summary-stats">
           <Ring value={stats.accuracy / 100} size={128} tone={stats.accuracy >= 60 ? "sage" : "terra"}>
             <b>{stats.accuracy}%</b>
-            <small>首次正确</small>
+            <small>첫 시도 정답</small>
           </Ring>
           <dl>
             <div>
-              <dt>新词</dt>
+              <dt>새 단어</dt>
               <dd>{session.newIds.length}</dd>
             </div>
             <div>
-              <dt>复习</dt>
+              <dt>복습</dt>
               <dd>{session.reviewIds.length}</dd>
             </div>
             <div>
-              <dt>用时</dt>
+              <dt>소요 시간</dt>
               <dd>
                 {minutes}
-                <small>分钟</small>
+                <small>분</small>
               </dd>
             </div>
           </dl>
@@ -424,18 +424,18 @@ function Summary({ session }: { session: ActiveSession }) {
             </li>
           ))}
         </ul>
-        <p className="summary-note">FSRS 已为每个词排好下次相遇的时间。答错的词，会更早回来。</p>
+        <p className="summary-note">FSRS가 단어마다 다음에 만날 때를 정해 두었어요. 틀린 단어는 더 일찍 돌아와요.</p>
         <div className="summary-actions">
           {wrong.length > 0 && (
             <button className="btn btn-ghost" onClick={again}>
-              <RotateCcw size={18} /> 再练 {wrong.length} 个错词
+              <RotateCcw size={18} /> 틀린 단어 {wrong.length}개 다시 연습
             </button>
           )}
           <button className="btn btn-ghost" onClick={() => shareSession(atlas, session)}>
-            <Share2 size={18} /> 分享成绩卡
+            <Share2 size={18} /> 결과 카드 공유
           </button>
           <button className="btn btn-primary btn-xl" onClick={done} ref={(b) => b?.focus({ preventScroll: true })}>
-            完成 <ArrowRight size={20} />
+            완료 <ArrowRight size={20} />
           </button>
         </div>
       </div>

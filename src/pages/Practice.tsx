@@ -14,15 +14,15 @@ type Mode = "word" | "sentence" | "dictation";
 type Source = "recent" | "mistakes" | "saved" | "path";
 
 const MODES: [Mode, string, string, typeof Type][] = [
-  ["word", "单词", "看图写出单词", Type],
-  ["sentence", "例句", "照着抄写，练出手感", Keyboard],
-  ["dictation", "听写", "只听声音，写下整句", Headphones],
+  ["word", "단어", "그림을 보고 단어 쓰기", Type],
+  ["sentence", "예문", "보고 따라 쓰며 손에 익히기", Keyboard],
+  ["dictation", "받아쓰기", "소리만 듣고 문장 전체 쓰기", Headphones],
 ];
 const SOURCES: [Source, string][] = [
-  ["recent", "最近学过"],
-  ["mistakes", "错词本"],
-  ["saved", "收藏"],
-  ["path", "学习路线"],
+  ["recent", "최근 학습"],
+  ["mistakes", "오답 노트"],
+  ["saved", "북마크"],
+  ["path", "학습 경로"],
 ];
 
 export function Practice() {
@@ -54,13 +54,13 @@ export function Practice() {
   return (
     <div className="page practice">
       <header className="page-head">
-        <p className="eyebrow">练习 · Typing Studio</p>
-        <h1 className="display">让手，也记住它们。</h1>
-        <p className="lede">打字只练拼写和手感，不会改动记忆进度。</p>
+        <p className="eyebrow">연습 · Typing Studio</p>
+        <h1 className="display">손도 단어를 기억하게 해요.</h1>
+        <p className="lede">타자 연습은 철자와 손감각만 익히며, 학습 진도에는 영향을 주지 않아요.</p>
       </header>
       <div className="practice-grid">
         <section className="panel">
-          <h3 className="eyebrow">模式</h3>
+          <h3 className="eyebrow">모드</h3>
           <div className="mode-cards">
             {MODES.map(([k, name, desc, Icon]) => (
               <button key={k} className={`mode-card ${mode === k ? "is-on" : ""}`} onClick={() => setMode(k)} aria-pressed={mode === k}>
@@ -70,7 +70,7 @@ export function Practice() {
               </button>
             ))}
           </div>
-          <h3 className="eyebrow">词来自</h3>
+          <h3 className="eyebrow">단어 출처</h3>
           <div className="segmented segmented-wide">
             {SOURCES.map(([k, label]) => (
               <button key={k} className={source === k ? "is-on" : ""} onClick={() => setSource(k)} aria-pressed={source === k}>
@@ -81,30 +81,30 @@ export function Practice() {
           <p className="muted">
             {pool.length
               ? source === "path"
-                ? "从学习路线的前 400 个词里随机抽 10 个。"
-                : `可练 ${pool.length} 个词，每轮随机 10 个。`
-              : "这里还没有词，先去学几个，或换个来源。"}
+                ? "학습 경로의 처음 400개 단어 중 10개를 무작위로 뽑아요."
+                : `연습할 수 있는 단어 ${pool.length}개, 한 판에 무작위 10개씩이에요.`
+              : "아직 단어가 없어요. 먼저 몇 개 학습하거나 다른 출처를 고르세요."}
           </p>
           <button className="btn btn-primary btn-xl" onClick={start} disabled={!pool.length}>
-            开始一轮
+            한 판 시작
           </button>
         </section>
         <section className="panel practice-side">
           <img src={`${import.meta.env.BASE_URL}brand/${mode === "dictation" ? "listen" : "typing"}.webp`} alt="" />
           <dl className="mini-stats">
             <div>
-              <dt>最佳速度</dt>
+              <dt>최고 속도</dt>
               <dd>
                 {best}
                 <small>WPM</small>
               </dd>
             </div>
             <div>
-              <dt>完成轮次</dt>
+              <dt>완료한 판</dt>
               <dd>{progress.typing.length}</dd>
             </div>
           </dl>
-          <p className="muted">WPM 按标准每 5 个字符计 1 词，只统计正确输入。</p>
+          <p className="muted">WPM은 표준대로 5글자를 1단어로 치고, 올바르게 입력한 글자만 계산해요.</p>
         </section>
       </div>
     </div>
@@ -169,17 +169,17 @@ function TypingRound({ mode, entries, onExit, onAgain }: { mode: Mode; entries: 
     return (
       <div className="page practice">
         <section className="panel typing-done">
-          <p className="eyebrow">本轮完成</p>
+          <p className="eyebrow">이번 판 완료</p>
           <h1 className="display">
             {m.wpm} <small>WPM</small>
           </h1>
-          <p className="lede">准确率 {m.accuracy}% · {entries.length} 项</p>
+          <p className="lede">정확도 {m.accuracy}% · {entries.length}개 항목</p>
           <div className="summary-actions">
             <button className="btn btn-ghost" onClick={onExit}>
-              返回
+              돌아가기
             </button>
             <button className="btn btn-primary btn-xl" onClick={onAgain} autoFocus>
-              <RotateCcw size={18} /> 再来一轮
+              <RotateCcw size={18} /> 한 판 더
             </button>
           </div>
         </section>
@@ -190,7 +190,7 @@ function TypingRound({ mode, entries, onExit, onAgain }: { mode: Mode; entries: 
     <div className="page practice typing">
       <header className="typing-top">
         <button className="btn btn-ghost" onClick={onExit}>
-          结束
+          끝내기
         </button>
         <AmbiencePicker />
         <div className="learn-progress">
@@ -213,7 +213,7 @@ function TypingRound({ mode, entries, onExit, onAgain }: { mode: Mode; entries: 
           <p className="typing-zh">
             {mode === "dictation" && (
               <button className="link" onClick={() => play(atlas.audio(e, "ex"), e.ex[0].en, settings.accent)}>
-                再听一遍
+                다시 듣기
               </button>
             )}
             {e.ex[0].zh}
@@ -241,10 +241,10 @@ function TypingRound({ mode, entries, onExit, onAgain }: { mode: Mode; entries: 
           autoCorrect="off"
           autoComplete="off"
           spellCheck={false}
-          aria-label="在这里输入"
+          aria-label="여기에 입력하세요"
         />
         <p className="muted typing-help">
-          {mode === "dictation" ? "听不清可以点「再听一遍」。" : "直接开始输入，全部正确后自动进入下一项。"} 第 {i + 1}/{entries.length} 项
+          {mode === "dictation" ? "잘 안 들리면 '다시 듣기'를 누르세요." : "바로 입력을 시작하세요. 모두 맞히면 자동으로 다음 항목으로 넘어가요."} · {i + 1}/{entries.length}
         </p>
       </section>
     </div>

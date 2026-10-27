@@ -4,8 +4,8 @@ import { Rating } from "../store/srs";
 import type { ActiveSession } from "../store/store";
 import { toast } from "./Toast";
 
-const SERIF = '"Fraunces Variable", "Songti SC", "Noto Serif SC", Georgia, serif';
-const SANS = '-apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
+const SERIF = '"Fraunces Variable", "Pretendard Variable", Pretendard, Georgia, serif';
+const SANS = '"Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
 
 const load = (src: string) =>
   new Promise<HTMLImageElement | null>((r) => {
@@ -59,22 +59,22 @@ export async function shareSession(atlas: Atlas, s: ActiveSession) {
     const d = new Date();
     ctx.fillStyle = "#8A8C96";
     ctx.font = `500 28px ${SANS}`;
-    ctx.fillText(`${d.getMonth() + 1}月${d.getDate()}日 · 今天点亮了 ${ids.length} 颗星`, pad, top - 24);
+    ctx.fillText(`${d.getMonth() + 1}월 ${d.getDate()}일 · 오늘 별 ${ids.length}개를 밝혔어요`, pad, top - 24);
     ctx.fillStyle = "#1E2640";
     ctx.font = `600 64px ${SERIF}`;
-    ctx.fillText(`学了 ${ids.length} 个词，首次正确 ${st.accuracy}%`, pad, top + 52, W - pad * 2);
+    ctx.fillText(`단어 ${ids.length}개 학습 · 첫 시도 정답률 ${st.accuracy}%`, pad, top + 52, W - pad * 2);
     const wrong = Object.values(s.graded).filter((g) => g === Rating.Again).length;
     ctx.font = `400 30px ${SANS}`;
     ctx.fillStyle = "#5A6075";
-    ctx.fillText(`新词 ${s.newIds.length} · 复习 ${s.reviewIds.length} · 需要再见面 ${wrong}`, pad, top + 112);
+    ctx.fillText(`새 단어 ${s.newIds.length} · 복습 ${s.reviewIds.length} · 다시 볼 단어 ${wrong}`, pad, top + 112);
     ctx.fillStyle = "rgba(30,38,64,.14)";
     ctx.fillRect(pad, H - 116, W - pad * 2, 2);
     ctx.fillStyle = "#1E2640";
     ctx.font = `600 34px ${SERIF}`;
-    ctx.fillText("词光 · Word Atlas", pad, H - 58);
+    ctx.fillText("별빛 단어장 · Word Atlas", pad, H - 58);
     ctx.font = `400 26px ${SANS}`;
     ctx.fillStyle = "#8A8C96";
-    const tag = "一词一画，点亮雅思";
+    const tag = "한 단어 한 그림, IELTS를 밝히다";
     ctx.fillText(tag, W - pad - ctx.measureText(tag).width, H - 60);
     const blob = await new Promise<Blob | null>((r) => c.toBlob(r, "image/png"));
     if (!blob) throw new Error();
@@ -88,8 +88,8 @@ export async function shareSession(atlas: Atlas, s: ActiveSession) {
     a.download = file.name;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-    toast("成绩卡已保存", "ok");
+    toast("성적 카드를 저장했어요", "ok");
   } catch {
-    toast("成绩卡生成失败", "warn");
+    toast("성적 카드를 만들지 못했어요", "warn");
   }
 }

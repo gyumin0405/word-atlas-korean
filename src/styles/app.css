@@ -30,8 +30,8 @@
   --shadow-sm: 0 1px 2px rgba(30, 38, 64, 0.06), 0 2px 6px -2px rgba(30, 38, 64, 0.06);
   --shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 1px 2px rgba(30, 38, 64, 0.05), 0 18px 40px -24px rgba(30, 38, 64, 0.28);
   --shadow-lg: 0 30px 80px -30px rgba(20, 26, 46, 0.45), 0 8px 24px -12px rgba(20, 26, 46, 0.2);
-  --serif: "Fraunces Variable", "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Noto Sans SC", Roboto, sans-serif;
+  --serif: "Fraunces Variable", "Pretendard Variable", Pretendard, Georgia, serif;
+  --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
   --r-sm: 10px;
   --r: 16px;
@@ -586,14 +586,22 @@ code {
   gap: 8px;
 }
 .logo-text b {
-  font: 700 21px/1 "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", serif;
-  letter-spacing: 0.06em;
+  font: 700 21px/1 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 .logo-text small {
   font: italic 500 14px/1 var(--serif);
   color: var(--ink-3);
   letter-spacing: 0.01em;
   font-variation-settings: "opsz" 24;
+  white-space: nowrap;
+}
+@media (max-width: 440px) {
+  /* The Korean name is wider than the original; drop the subtitle on phones. */
+  .topbar-logo .logo-text small {
+    display: none;
+  }
 }
 .topnav {
   display: none;

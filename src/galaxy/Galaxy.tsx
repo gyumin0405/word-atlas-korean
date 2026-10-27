@@ -293,7 +293,7 @@ export function Galaxy({
         }}
         onWheel={onWheel}
         role="img"
-        aria-label={`词汇星图：${layout.n} 颗星，已点亮 ${lit} 颗。可拖动旋转、滚动缩放，点击星星打开词条。`}
+        aria-label={`단어 별자리: 별 ${layout.n}개 중 ${lit}개를 밝혔어요. 드래그해서 회전하고 스크롤해서 확대·축소할 수 있으며, 별을 클릭하면 항목이 열려요.`}
         tabIndex={0}
         onKeyDown={(e) => {
           const eng = engine.current;
@@ -328,28 +328,28 @@ export function Galaxy({
       )}
       <div className="galaxy-hud">
         <p>
-          <b>{lit.toLocaleString()}</b> / {layout.n.toLocaleString()} 颗星已点亮
+          별 <b>{lit.toLocaleString()}</b> / {layout.n.toLocaleString()}개 밝힘
         </p>
         <ul className="galaxy-legend" aria-hidden="true">
           <li>
             <i className="lg-dust" />
-            未学
+            새 단어
           </li>
           <li>
             <i className="lg-learning" />
-            学习中
+            학습 중
           </li>
           <li>
             <i className="lg-mastered" />
-            已掌握
+            익힘
           </li>
         </ul>
       </div>
       <div className="galaxy-controls">
-        <button className="icon-btn" onClick={() => engine.current && (engine.current.cam.dist = clampDist(engine.current.cam.dist * 0.8))} aria-label="放大">
+        <button className="icon-btn" onClick={() => engine.current && (engine.current.cam.dist = clampDist(engine.current.cam.dist * 0.8))} aria-label="확대">
           <Plus size={18} />
         </button>
-        <button className="icon-btn" onClick={() => engine.current && (engine.current.cam.dist = clampDist(engine.current.cam.dist * 1.25))} aria-label="缩小">
+        <button className="icon-btn" onClick={() => engine.current && (engine.current.cam.dist = clampDist(engine.current.cam.dist * 1.25))} aria-label="축소">
           <Minus size={18} />
         </button>
         <button
@@ -359,7 +359,7 @@ export function Galaxy({
             engine.current?.replayIntro();
             if (store.get().settings.sfx) void cue("fly");
           }}
-          aria-label="回到全景"
+          aria-label="전체 보기로 돌아가기"
         >
           <RotateCcw size={17} />
         </button>
@@ -374,15 +374,15 @@ export function Galaxy({
               if (store.get().settings.sfx) void cue("fly");
             }
           }}
-          aria-label="飞到一颗已点亮的星"
+          aria-label="밝힌 별로 날아가기"
         >
           <Crosshair size={17} />
         </button>
-        <button className="icon-btn" onClick={() => canvas.current && shareGalaxy(canvas.current, lit, layout.n)} aria-label="分享我的星图">
+        <button className="icon-btn" onClick={() => canvas.current && shareGalaxy(canvas.current, lit, layout.n)} aria-label="내 별자리 지도 공유하기">
           <Share2 size={17} />
         </button>
       </div>
-      <p className="galaxy-hint">拖动旋转 · 滚动缩放 · 点击星星打开词条</p>
+      <p className="galaxy-hint">드래그해서 회전 · 스크롤해서 확대·축소 · 별을 클릭하면 항목 열기</p>
     </div>
   );
 }

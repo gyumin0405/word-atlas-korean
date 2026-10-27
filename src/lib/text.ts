@@ -57,7 +57,7 @@ export function hashSeed(s: string) {
   return h >>> 0;
 }
 
-/** Collocations are stored as "english｜中文". */
+/** Collocations are stored as "english｜한국어". */
 export const splitPair = (s: string) => {
   const [en, zh] = s.split(/[｜|]/);
   return { en: (en || "").trim(), zh: (zh || "").trim() };

@@ -85,13 +85,13 @@ export const isLearning = (c?: CardState) => !!c && !isMastered(c);
 
 export function formatInterval(ms: number) {
   const m = Math.round(ms / 60000);
-  if (m < 1) return "<1分";
-  if (m < 60) return `${m}分`;
+  if (m < 1) return "1분 미만";
+  if (m < 60) return `${m}분`;
   const h = Math.round(m / 60);
-  if (h < 24) return `${h}小时`;
+  if (h < 24) return `${h}시간`;
   const d = Math.round(h / 24);
-  if (d < 31) return `${d}天`;
+  if (d < 31) return `${d}일`;
   const mo = Math.round(d / 30);
-  if (mo < 12) return `${mo}个月`;
-  return `${(d / 365).toFixed(1)}年`;
+  if (mo < 12) return `${mo}개월`;
+  return `${(d / 365).toFixed(1)}년`;
 }

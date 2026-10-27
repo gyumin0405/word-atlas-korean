@@ -1,8 +1,8 @@
 import type { Atlas, Entry } from "../atlas/types";
 import { toast } from "./Toast";
 
-const SERIF = '"Fraunces Variable", "Songti SC", "Noto Serif SC", Georgia, serif';
-const SANS = '-apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif';
+const SERIF = '"Fraunces Variable", "Pretendard Variable", Pretendard, Georgia, serif';
+const SANS = '"Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
 
 function loadImage(src: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
@@ -14,7 +14,7 @@ function loadImage(src: string) {
 }
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number) {
-  const tokens = /[一-鿿]/.test(text) ? Array.from(text) : text.split(/(\s+)/);
+  const tokens = text.split(/(\s+)/);
   const lines: string[] = [];
   let line = "";
   for (const t of tokens) {
@@ -75,7 +75,7 @@ export async function renderWordCard(atlas: Atlas, e: Entry) {
   y += 62;
   ctx.font = `400 34px ${SANS}`;
   ctx.fillStyle = "#6B6F80";
-  ctx.fillText([e.uk && `英 ${e.uk}`, e.us && e.us !== e.uk && `美 ${e.us}`].filter(Boolean).join("    "), pad, y);
+  ctx.fillText([e.uk && `영 ${e.uk}`, e.us && e.us !== e.uk && `미 ${e.us}`].filter(Boolean).join("    "), pad, y);
   y += 72;
   ctx.font = `600 40px ${SANS}`;
   ctx.fillStyle = "#1E2640";
@@ -86,7 +86,7 @@ export async function renderWordCard(atlas: Atlas, e: Entry) {
   const posW = ctx.measureText(s0.pos + "  ").width;
   ctx.fillStyle = "#1E2640";
   ctx.font = `600 40px ${SANS}`;
-  ctx.fillText(e.senses.slice(0, 2).map((s) => s.zh).join("；"), pad + posW, y);
+  ctx.fillText(e.senses.slice(0, 2).map((s) => s.zh).join(" · "), pad + posW, y);
   y += 76;
   if (e.ex[0]) {
     ctx.font = `italic 400 36px ${SERIF}`;
@@ -106,10 +106,10 @@ export async function renderWordCard(atlas: Atlas, e: Entry) {
   ctx.fillRect(pad, H - 120, art, 2);
   ctx.fillStyle = "#1E2640";
   ctx.font = `600 34px ${SERIF}`;
-  ctx.fillText("词光 · Word Atlas", pad, H - 62);
+  ctx.fillText("별빛 단어장 · Word Atlas", pad, H - 62);
   ctx.font = `400 26px ${SANS}`;
   ctx.fillStyle = "#7A7C88";
-  const tag = "一词一画，点亮雅思";
+  const tag = "한 단어 한 그림, IELTS를 밝히다";
   ctx.fillText(tag, W - pad - ctx.measureText(tag).width, H - 64);
   return c;
 }
@@ -129,8 +129,8 @@ export async function shareWord(atlas: Atlas, e: Entry) {
     a.download = file.name;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-    toast("分享卡片已保存", "ok");
+    toast("공유 카드를 저장했어요", "ok");
   } catch {
-    toast("卡片生成失败，请稍后再试", "warn");
+    toast("카드를 만들지 못했어요. 잠시 후 다시 시도해 주세요", "warn");
   }
 }

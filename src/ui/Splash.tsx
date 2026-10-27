@@ -70,11 +70,15 @@ function targets(w: number, h: number, count: number) {
   g.lineTo(cx, cy + R * 0.1);
   g.closePath();
   g.fill();
-  const zh = Math.min(w * 0.3, s * 0.24);
-  g.font = `700 ${zh}px "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", serif`;
+  const name = "별빛 단어장";
+  const face = (px: number) => `700 ${px}px "Pretendard Variable", Pretendard, sans-serif`;
+  let zh = Math.min(w * 0.3, s * 0.24);
+  g.font = face(zh);
+  zh *= Math.min(1, (w * 0.86) / g.measureText(name).width); // the name is longer than the original two characters
+  g.font = face(zh);
   g.textAlign = "center";
   g.textBaseline = "middle";
-  g.fillText("词光", cx, cy + R + zh * 0.78);
+  g.fillText(name, cx, cy + R + zh * 0.78);
   const en = Math.max(18, zh * 0.24);
   g.font = `700 ${en}px "Fraunces Variable", Georgia, serif`;
   g.letterSpacing = `${en * 0.34}px`;
@@ -237,22 +241,22 @@ export function Splash({ onDone }: { onDone: () => void }) {
   }); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className={`splash is-${phase} ${reduce ? "is-reduced" : ""}`} onClick={() => open()} role="dialog" aria-label="欢迎打开雅思大门，点击进入">
+    <div className={`splash is-${phase} ${reduce ? "is-reduced" : ""}`} onClick={() => open()} role="dialog" aria-label="IELTS의 문을 열어 보세요. 눌러서 들어가기">
       <div className="door door-l" />
       <div className="door door-r" />
       <div className="splash-light" />
       <canvas ref={canvas} className="splash-canvas" aria-hidden="true" />
       {reduce && (
         <div className="splash-static">
-          <b>词光</b>
+          <b>별빛 단어장</b>
           <small>WORD ATLAS</small>
         </div>
       )}
       <div className="splash-copy">
-        <p className="splash-tag">欢迎打开雅思大门</p>
+        <p className="splash-tag">IELTS의 문을 열어 보세요</p>
         <p className="splash-hint">
           <span className="splash-key" />
-          点击开启 · 按任意键
+          눌러서 시작 · 아무 키나 누르기
         </p>
       </div>
       <button
@@ -262,7 +266,7 @@ export function Splash({ onDone }: { onDone: () => void }) {
           open(false);
         }}
       >
-        跳过
+        건너뛰기
       </button>
     </div>
   );

@@ -15,11 +15,11 @@ import { Ring } from "../ui/Ring";
 const BRAND = `${import.meta.env.BASE_URL}brand`;
 
 function greeting(h: number) {
-  if (h < 5) return "夜深了";
-  if (h < 11) return "早上好";
-  if (h < 14) return "中午好";
-  if (h < 18) return "下午好";
-  return "晚上好";
+  if (h < 5) return "늦은 밤이에요";
+  if (h < 11) return "좋은 아침이에요";
+  if (h < 14) return "좋은 점심이에요";
+  if (h < 18) return "좋은 오후예요";
+  return "좋은 저녁이에요";
 }
 
 export function streakOf(days: Record<string, { r: number }>) {
@@ -67,7 +67,7 @@ export function Today() {
     const d = new Date();
     d.setDate(d.getDate() - (6 - i));
     const k = dayKey(d);
-    return { k, label: "日一二三四五六"[d.getDay()], v: progress.days[k]?.r ?? 0, today: i === 6 };
+    return { k, label: "일월화수목금토"[d.getDay()], v: progress.days[k]?.r ?? 0, today: i === 6 };
   });
 
   const learned = Object.keys(progress.cards).length;
@@ -78,9 +78,9 @@ export function Today() {
     <div className="page today">
       <header className="greet">
         <p className="eyebrow">
-          {now.getMonth() + 1}月{now.getDate()}日 · 星期{"日一二三四五六"[now.getDay()]}
+          {now.getMonth() + 1}월 {now.getDate()}일 · {"일월화수목금토"[now.getDay()]}요일
         </p>
-        <h1 className="display">{greeting(now.getHours())}，探索者。</h1>
+        <h1 className="display">{greeting(now.getHours())}, 탐험가님.</h1>
       </header>
 
       <section className={`journey ${total === 0 && !active ? "is-clear" : ""}`}>
@@ -88,63 +88,63 @@ export function Today() {
         <div className="journey-body">
           {active ? (
             <>
-              <p className="eyebrow eyebrow-light">旅程进行中</p>
+              <p className="eyebrow eyebrow-light">여정 진행 중</p>
               <h2>
-                还剩 <b>{active.steps.length - active.index}</b> 步
+                <b>{active.steps.length - active.index}</b>단계 남았어요
               </h2>
-              <p className="journey-lede">进度已保存，随时接着走。</p>
+              <p className="journey-lede">진행 상황이 저장됐어요. 언제든 이어서 하세요.</p>
             </>
           ) : total > 0 ? (
             <>
-              <p className="eyebrow eyebrow-light">今日旅程</p>
+              <p className="eyebrow eyebrow-light">오늘의 여정</p>
               <h2>
                 {plan.due.length > 0 && (
                   <>
-                    复习 <b>{plan.due.length}</b>
+                    복습 <b>{plan.due.length}</b>
                   </>
                 )}
                 {plan.due.length > 0 && plan.fresh.length > 0 && <i> · </i>}
                 {plan.fresh.length > 0 && (
                   <>
-                    新词 <b>{plan.fresh.length}</b>
+                    새 단어 <b>{plan.fresh.length}</b>
                   </>
                 )}
               </h2>
-              <p className="journey-lede">约 {plan.minutes} 分钟。先温故，再知新。</p>
+              <p className="journey-lede">약 {plan.minutes}분. 복습 먼저, 새 단어는 그다음에.</p>
             </>
           ) : (
             <>
-              <p className="eyebrow eyebrow-light">今日已完成</p>
-              <h2>今天的星，都亮了。</h2>
-              <p className="journey-lede">记忆需要一点留白。想多走一段，也可以。</p>
+              <p className="eyebrow eyebrow-light">오늘 학습 완료</p>
+              <h2>오늘의 별이 모두 밝혀졌어요.</h2>
+              <p className="journey-lede">기억에는 약간의 여백이 필요해요. 조금 더 가고 싶다면 그것도 좋아요.</p>
             </>
           )}
           {teaser.length > 0 && (
-            <div className="teaser" aria-label="今天将遇见的新词">
+            <div className="teaser" aria-label="오늘 만날 새 단어">
               {teaser.map((w, i) => (
                 <Illustration key={w.id} src={atlas.img(w, "thumb")} word={w.word} topic={w.topic} className={`teaser-${i}`} />
               ))}
-              <span>今天会遇见它们</span>
+              <span>오늘 만날 단어들</span>
             </div>
           )}
           <div className="journey-actions">
             {active || total > 0 ? (
               <button className="btn btn-primary btn-xl" onClick={() => start()}>
-                {active ? "继续旅程" : "开始今天的旅程"} <ArrowRight size={20} />
+                {active ? "여정 이어 가기" : "오늘의 여정 시작하기"} <ArrowRight size={20} />
               </button>
             ) : (
               <button className="btn btn-primary btn-xl" onClick={() => start({ extra: 5 })}>
-                再认识 5 个新词 <Sparkles size={18} />
+                새 단어 5개 더 배우기 <Sparkles size={18} />
               </button>
             )}
             {!active && plan.due.length > 0 && plan.fresh.length > 0 && (
               <button className="btn btn-glass" onClick={() => start({ reviewOnly: true })}>
-                只复习
+                복습만 하기
               </button>
             )}
             {!active && total === 0 && (
               <button className="btn btn-glass" onClick={() => go({ page: "practice" })}>
-                <Keyboard size={18} /> 打字练习
+                <Keyboard size={18} /> 타자 연습
               </button>
             )}
           </div>
@@ -156,19 +156,19 @@ export function Today() {
 
         <section className="panel streak-panel">
           <div className="panel-head">
-            <h3 className="eyebrow">这一周</h3>
+            <h3 className="eyebrow">이번 주</h3>
             <span className={`streak ${streak ? "is-on" : ""}`}>
-              <Flame size={16} /> 连续 {streak} 天
+              <Flame size={16} /> {streak}일 연속
             </span>
           </div>
           <div className="streak-body">
             <Ring value={goal ? doneToday / goal : 0} size={112} stroke={8} tone="terra">
               <b>{doneToday}</b>
-              <small>今日答题</small>
+              <small>오늘 푼 문제</small>
             </Ring>
             <ol className="week">
               {week.map((d) => (
-                <li key={d.k} className={`${d.v ? "is-on" : ""} ${d.today ? "is-today" : ""}`} title={`${d.k}：${d.v} 题`}>
+                <li key={d.k} className={`${d.v ? "is-on" : ""} ${d.today ? "is-today" : ""}`} title={`${d.k}: ${d.v}문제`}>
                   <span style={{ "--h": Math.min(1, d.v / 40) } as React.CSSProperties} />
                   <small>{d.label}</small>
                 </li>
@@ -177,15 +177,15 @@ export function Today() {
           </div>
           <dl className="mini-stats">
             <div>
-              <dt>已点亮</dt>
+              <dt>밝힌 별</dt>
               <dd>{learned.toLocaleString()}</dd>
             </div>
             <div>
-              <dt>已掌握</dt>
+              <dt>익힘</dt>
               <dd>{mastered.toLocaleString()}</dd>
             </div>
             <div>
-              <dt>全部词汇</dt>
+              <dt>전체 단어</dt>
               <dd>{atlas.count.toLocaleString()}</dd>
             </div>
           </dl>
@@ -214,13 +214,13 @@ function GalaxyPanel({ learned, total }: { learned: number; total: number }) {
     <section className="galaxy-panel" onClick={() => go({ page: "atlas", view: "galaxy" })} role="link" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && go({ page: "atlas", view: "galaxy" })}>
       <Galaxy mode="mini" highlight={todayIds} />
       <div className="galaxy-panel-copy">
-        <p className="eyebrow eyebrow-light">你的词汇星图</p>
+        <p className="eyebrow eyebrow-light">나의 단어 별자리</p>
         <h3>
-          已点亮 <b>{learned.toLocaleString()}</b> 颗星
+          별 <b>{learned.toLocaleString()}</b>개를 밝혔어요
         </h3>
-        <p>{learned ? `还有 ${(total - learned).toLocaleString()} 颗在等你。金色是今天新点亮的。` : `${total.toLocaleString()} 个词是 ${total.toLocaleString()} 颗星。学会一个，就点亮一颗。`}</p>
+        <p>{learned ? `아직 ${(total - learned).toLocaleString()}개가 기다리고 있어요. 금색은 오늘 새로 밝힌 별이에요.` : `${total.toLocaleString()}개의 단어는 ${total.toLocaleString()}개의 별이에요. 하나를 익히면 별 하나가 밝혀져요.`}</p>
         <span className="btn btn-glass">
-          进入星图 <ArrowRight size={18} />
+          별자리 지도 보기 <ArrowRight size={18} />
         </span>
       </div>
     </section>
@@ -237,10 +237,10 @@ function WordOfDay() {
   const { entry } = useEntry(pick?.id);
   if (!pick) return null;
   return (
-    <section className="panel wotd" onClick={() => openWord(pick.id)} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && openWord(pick.id)} aria-label={`今日一词：${pick.word}`}>
+    <section className="panel wotd" onClick={() => openWord(pick.id)} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && openWord(pick.id)} aria-label={`오늘의 단어: ${pick.word}`}>
       <Illustration src={atlas.img(pick)} word={pick.word} topic={pick.topic} className="wotd-art" />
       <div className="wotd-body">
-        <h3 className="eyebrow">今日一词</h3>
+        <h3 className="eyebrow">오늘의 단어</h3>
         <p className="wotd-word" lang="en">
           {pick.word}
         </p>
@@ -277,13 +277,13 @@ function LevelPath() {
     }
     return out;
   }, [atlas, cards]);
-  const NAMES = ["入门", "基础", "进阶", "中高", "高级", "精通"];
+  const NAMES = ["입문", "기초", "중급", "중상급", "고급", "숙달"];
   return (
     <section className="panel path-panel">
       <div className="panel-head">
-        <h3 className="eyebrow">学习路线 · 从 A1 到 C2</h3>
+        <h3 className="eyebrow">학습 경로 · A1부터 C2까지</h3>
         <span className="legend">
-          <i className="lg-seen" /> 已学 <i className="lg-done" /> 已掌握
+          <i className="lg-seen" /> 학습함 <i className="lg-done" /> 익힘
         </span>
       </div>
       <ol className="route">
@@ -292,7 +292,7 @@ function LevelPath() {
           const done = l.mastered / Math.max(1, l.total);
           return (
             <li key={l.name} className={`${i === start ? "is-start" : ""} ${l.seen ? "is-on" : ""}`}>
-              <button onClick={() => go({ page: "atlas", level: l.name })} aria-label={`${l.name} ${NAMES[i]}，已学 ${l.seen} / ${l.total}`}>
+              <button onClick={() => go({ page: "atlas", level: l.name })} aria-label={`${l.name} ${NAMES[i]}, 학습함 ${l.seen} / ${l.total}`}>
                 <span className="station" style={{ "--seen": seen, "--done": done } as React.CSSProperties}>
                   <b>{l.name}</b>
                 </span>
@@ -301,7 +301,7 @@ function LevelPath() {
                   {l.seen}
                   <small>/{l.total}</small>
                 </span>
-                {i === start && <span className="station-flag">起点</span>}
+                {i === start && <span className="station-flag">출발점</span>}
               </button>
             </li>
           );
@@ -321,9 +321,9 @@ function Topics() {
   return (
     <section className="topics-panel">
       <div className="panel-head">
-        <h3 className="eyebrow">按雅思话题探索</h3>
+        <h3 className="eyebrow">IELTS 주제별로 살펴보기</h3>
         <button className="link" onClick={() => go({ page: "atlas" })}>
-          打开图鉴
+          도감 열기
         </button>
       </div>
       <ul className="topic-tiles">
@@ -333,7 +333,7 @@ function Topics() {
               <img src={`${BRAND}/topic-${key}.webp`} alt="" loading="lazy" onError={(e) => (e.currentTarget.style.visibility = "hidden")} />
               <span>
                 <b>{name}</b>
-                <small>{counts[i]} 个词</small>
+                <small>{counts[i]}개 단어</small>
               </span>
             </button>
           </li>

@@ -1,7 +1,7 @@
 import { toast } from "../ui/Toast";
 
-const SERIF = '"Fraunces Variable", "Songti SC", "Noto Serif SC", Georgia, serif';
-const SANS = '-apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
+const SERIF = '"Fraunces Variable", "Pretendard Variable", Pretendard, Georgia, serif';
+const SANS = '"Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
 
 /** "My word galaxy": the live render framed as a 4:5 poster. */
 export async function shareGalaxy(source: HTMLCanvasElement, lit: number, total: number) {
@@ -29,21 +29,21 @@ export async function shareGalaxy(source: HTMLCanvasElement, lit: number, total:
     const pad = 72;
     g.fillStyle = "rgba(243,236,223,.62)";
     g.font = `500 28px ${SANS}`;
-    g.fillText("我的词汇星图", pad, 1110);
+    g.fillText("나의 단어 별자리", pad, 1110);
     g.fillStyle = "#f3ecdf";
     g.font = `600 76px ${SERIF}`;
-    g.fillText(`已点亮 ${lit.toLocaleString()} 颗星`, pad, 1196);
+    g.fillText(`밝힌 별 ${lit.toLocaleString()}개`, pad, 1196);
     g.font = `400 28px ${SANS}`;
     g.fillStyle = "rgba(243,236,223,.6)";
-    g.fillText(`共 ${total.toLocaleString()} 个雅思词 · 每学会一个，就点亮一颗`, pad, 1248);
+    g.fillText(`IELTS 단어 ${total.toLocaleString()}개 · 하나를 익힐 때마다 별 하나가 켜져요`, pad, 1248);
     g.fillStyle = "rgba(243,236,223,.16)";
     g.fillRect(pad, H - 66, W - pad * 2, 1);
     g.fillStyle = "#f3ecdf";
     g.font = `600 30px ${SERIF}`;
-    g.fillText("词光 · Word Atlas", pad, H - 26);
+    g.fillText("별빛 단어장 · Word Atlas", pad, H - 26);
     g.font = `400 24px ${SANS}`;
     g.fillStyle = "rgba(243,236,223,.55)";
-    const tag = "一词一画，点亮雅思";
+    const tag = "한 단어 한 그림, IELTS를 밝히다";
     g.fillText(tag, W - pad - g.measureText(tag).width, H - 28);
     const blob = await new Promise<Blob | null>((r) => c.toBlob(r, "image/png"));
     if (!blob) throw new Error("no blob");
@@ -57,8 +57,8 @@ export async function shareGalaxy(source: HTMLCanvasElement, lit: number, total:
     a.download = file.name;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-    toast("星图已保存", "ok");
+    toast("별자리 지도를 저장했어요", "ok");
   } catch {
-    toast("星图生成失败", "warn");
+    toast("별자리 지도를 만들지 못했어요", "warn");
   }
 }
