@@ -2660,11 +2660,17 @@ code {
   border-bottom: 0;
   box-shadow: 0 -20px 50px -30px rgba(30, 38, 64, 0.4);
 }
+/* The dark theme's soft tints are translucent, so lay them over the solid card
+   colour; otherwise the answer choices behind the panel show through. */
 .feedback.is-right .feedback-inner {
-  background: color-mix(in oklab, var(--sage-soft) 70%, var(--card));
+  background:
+    linear-gradient(color-mix(in oklab, var(--sage-soft) 70%, var(--card)) 0 0),
+    var(--card);
 }
 .feedback.is-wrong .feedback-inner {
-  background: color-mix(in oklab, var(--terra-soft) 70%, var(--card));
+  background:
+    linear-gradient(color-mix(in oklab, var(--terra-soft) 70%, var(--card)) 0 0),
+    var(--card);
 }
 .feedback-art {
   width: 64px;
