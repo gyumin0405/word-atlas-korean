@@ -1,3 +1,15 @@
+# 별빛 단어장 · Word Atlas 비공식 한국어판
+
+[Word Atlas(词光)](https://github.com/designfuchen/word-atlas)를 한국어 학습자용으로 옮긴 **비공식** 한국어판이에요. 원 프로젝트나 그 기여자와는 관련이 없고, 그들의 보증을 받지 않았어요. IELTS 공식 단어 목록도 아니에요.
+
+- **원본:** Word Atlas contributors — 코드 [MIT](LICENSE), 단어 데이터·일러스트·녹음 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **바꾼 내용:** 단어 7,298개의 뜻·예문 번역·연어·팁·주의 문구와 앱 화면을 한국어로 옮겼어요. 번역은 AI(Claude)로 했고 항목마다 사람이 검토하지는 않았어요. 자세한 내용과 한국어 번역의 라이선스(CC BY 4.0)는 [CONTENT_LICENSE.md](CONTENT_LICENSE.md)에 있어요.
+- 틀린 번역을 발견하면 이 저장소에 Issue를 남겨 주세요. 원본 저장소가 아니라 여기로 알려 주세요.
+
+아래는 원본 README예요.
+
+---
+
 <div align="center">
 
 <a href="https://0xlei.tech/words/"><img src="docs/assets/cover-v2.jpg" alt="词光 Word Atlas — 一词一画，点亮雅思" width="100%"></a>
