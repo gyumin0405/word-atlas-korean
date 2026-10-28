@@ -99,7 +99,13 @@ export default defineConfig({
       },
     },
   ],
-  server: { port: 5188, strictPort: true },
+  server: {
+    port: 5188,
+    strictPort: true,
+    // Watching the ~37k media files in public/atlas makes the first page load
+    // take 15-30 s on Windows. They never change while the app is running.
+    watch: { ignored: ["**/public/atlas/**", "**/.local/**"] },
+  },
   preview: { port: 5188, strictPort: true },
   build: { chunkSizeWarningLimit: 600 },
 });
