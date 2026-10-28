@@ -99,7 +99,7 @@ export function AtlasPage({
         <div>
           <p className="eyebrow">도감 · 단어 {atlas.count.toLocaleString()}개</p>
           <h1 className="display">
-            단어마다
+            단어마다{" "}
             <br className="br-sm" />
             그림 한 장씩.
           </h1>

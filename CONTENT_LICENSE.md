@@ -2,7 +2,7 @@
 
 ## 한국어판 / Korean edition
 
-이 저장소는 [Word Atlas](https://github.com/designfuchen/word-atlas)(Word Atlas contributors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))를 바탕으로 만든 비공식 한국어판 **별빛 단어장**이에요. 원 프로젝트나 그 기여자와는 관련이 없고, 그들의 보증을 받지 않았어요.
+이 저장소는 [Word Atlas](https://github.com/designfuchen/word-atlas)(Word Atlas contributors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))를 바탕으로 만든 비공식 한국어판 **별빛 단어장**이에요. 원작자가 아닌 개인(gyumin0405)이 따로 만든 것이라, 원작자는 한국어 번역 작업에 참여하거나 검토하지 않았어요. 한국어판에 관한 문의와 책임은 이 저장소에 있어요.
 
 **원본 저작자 표시:** Word Atlas contributors — CC BY 4.0. 아래의 원래 조건이 그대로 적용돼요.
 
@@ -17,7 +17,7 @@
 
 **글꼴:** 한국어 글꼴 [Pretendard](https://github.com/orioncactus/pretendard)는 SIL Open Font License 1.1을 따라요.
 
-This repository is an unofficial Korean edition of Word Atlas, not affiliated with or endorsed by its contributors. The Korean translations and fixes listed above are licensed under CC BY 4.0; the original attribution and terms below still apply. The Pretendard typeface is under the SIL Open Font License 1.1.
+This repository is an unofficial Korean edition of Word Atlas, made independently by gyumin0405; the original contributors did not take part in or review the Korean translation, so questions about it belong here. The Korean translations and fixes listed above are licensed under CC BY 4.0; the original attribution and terms below still apply. The Pretendard typeface is under the SIL Open Font License 1.1.
 
 ---
 

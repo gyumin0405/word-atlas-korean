@@ -1,153 +1,119 @@
 # 별빛 단어장 · Word Atlas 비공식 한국어판
 
-[Word Atlas(词光)](https://github.com/designfuchen/word-atlas)를 한국어 학습자용으로 옮긴 **비공식** 한국어판이에요. 원 프로젝트나 그 기여자와는 관련이 없고, 그들의 보증을 받지 않았어요. IELTS 공식 단어 목록도 아니에요.
+[Word Atlas(词光)](https://github.com/designfuchen/word-atlas)를 한국어 학습자용으로 옮긴 **비공식** 한국어판이에요. 원작자가 아닌 개인(gyumin0405)이 따로 만든 것이라, 원작자는 한국어 번역 작업에 참여하거나 검토하지 않았어요. 한국어판에 관한 문의와 책임은 이 저장소에 있어요. IELTS 공식 단어 목록도 아니에요.
 
 - **원본:** Word Atlas contributors — 코드 [MIT](LICENSE), 단어 데이터·일러스트·녹음 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - **바꾼 내용:** 단어 7,298개의 뜻·예문 번역·연어·팁·주의 문구와 앱 화면을 한국어로 옮겼어요. 번역은 AI(Claude)로 했고 항목마다 사람이 검토하지는 않았어요. 자세한 내용과 한국어 번역의 라이선스(CC BY 4.0)는 [CONTENT_LICENSE.md](CONTENT_LICENSE.md)에 있어요.
 - 틀린 번역을 발견하면 이 저장소에 Issue를 남겨 주세요. 원본 저장소가 아니라 여기로 알려 주세요.
 
 아래는 원본 README예요.
+[中文原版 README](README.zh-CN.md) · [English README](README.en.md)
 
 ---
 
 <div align="center">
 
-<a href="https://0xlei.tech/words/"><img src="docs/assets/cover-v2.jpg" alt="词光 Word Atlas — 一词一画，点亮雅思" width="100%"></a>
+**단어를 그림으로 바꾸고, 복습에 길잡이를 만들어요.**
 
-# 词光 · Word Atlas
+IELTS 단어 7,298개 · 오리지널 일러스트 · 영국·미국 발음 · FSRS 간격 복습
 
-**把单词变成画面，让复习有迹可循。**
-
-7,298 个雅思词条 · 原创插画 · 英美发音 · FSRS 间隔复习
-
-[**立即体验 ↗**](https://0xlei.tech/words/)　 /　 [48 秒介绍](docs/assets/launch.mp4)　 /　 [下载词库](data/)　 /　 [English](README.en.md)
+[**바로 써 보기 ↗**](https://gyumin0405.github.io/word-atlas-korean/)　 /　 [단어 데이터 내려받기](data/)
 
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-17283B?style=flat-square)](LICENSE)
 [![Dataset: CC BY 4.0](https://img.shields.io/badge/Dataset-CC_BY_4.0-AD5038?style=flat-square)](CONTENT_LICENSE.md)
-[![Follow on X](https://img.shields.io/badge/X-@yangleiocx3-17283B?style=flat-square&logo=x&logoColor=white)](https://x.com/yangleiocx3)
-
-<br>
-
-<a href="https://0xlei.tech/words/"><img src="https://0xlei.tech/words/beta/banner.png" alt="词光 iOS 首批内测：微信扫码加入内测群" width="100%"></a>
-
-**词光 iOS 正在开发，首批内测招募中。** 微信扫上图二维码进群；二维码过期或群满了，打开 [网站](https://0xlei.tech/words/) 点顶栏「内测」，加作者微信拉你进群。
 
 </div>
 
----
+별빛 단어장은 일러스트와 문맥을 중심으로 IELTS 단어를 익히는 앱이에요. 그림으로 뜻을 이해하고, 발음을 들으며 연결하고, 떠올리기와 간격 복습으로 기억을 굳혀요. 계정이 필요 없고, 학습 기록은 내 기기에만 저장돼요.
 
-词光是一款以插画和语境为核心的雅思背词应用。看画面理解词义，听发音建立联系，再用主动回忆和间隔复习巩固记忆。无需账号，学习进度保存在自己的设备上。
+[미리 보기](#미리-보기) · [학습 방식](#학습-방식) · [로컬에서 실행하기](#로컬에서-실행하기) · [공개 데이터](#공개-데이터) · [기여하기](#기여하기)
 
-> **版本说明**：这个仓库提供词光的开源基础版及配套数据集。在线网站独立迭代，功能与仓库可能不同；仓库里的代码和内容分别遵循下方的 MIT / CC BY 4.0 授权。
+## 미리 보기
 
-[产品预览](#产品预览) · [学习方式](#学习方式) · [本地运行](#本地运行) · [开放数据](#开放数据) · [参与贡献](#参与贡献)
+### 듣고 연습할 수 있는 단어 도감
 
-## 产品预览
-
-### 一本可以听、可以练的单词图鉴
-
-<img src="docs/assets/atlas-desktop.jpg" alt="开源版桌面图鉴：插画词卡和词汇浏览" width="100%">
+<img src="docs/assets/atlas-desktop.jpg" alt="데스크톱 도감 화면: 일러스트 단어 카드와 단어 목록" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/today-mobile.jpg" alt="手机端今日学习页" width="100%"></td>
-<td width="50%"><img src="docs/assets/word-mobile.jpg" alt="手机端词卡，展示插画、英美发音与例句" width="100%"></td>
+<td width="50%"><img src="docs/assets/today-mobile.jpg" alt="휴대폰의 오늘 학습 화면" width="100%"></td>
+<td width="50%"><img src="docs/assets/word-mobile.jpg" alt="휴대폰 단어 카드: 일러스트, 영국·미국 발음, 뜻" width="100%"></td>
 </tr>
-<tr><td align="center">每日计划，把注意力放在今天</td><td align="center">插画、词义、发音，在一张词卡里</td></tr>
+<tr><td align="center">오늘의 계획에 집중하기</td><td align="center">그림, 뜻, 발음을 카드 한 장에</td></tr>
 </table>
 
-<sub>以上为仓库开源版的实际界面。页首为品牌概念插画。</sub>
+<sub>이 저장소의 실제 화면이에요.</sub>
 
-### 学过的词，汇成自己的星图
+### 익힌 단어가 나만의 별자리가 돼요
 
-<img src="docs/assets/galaxy.jpg" alt="词汇星图界面：按话题组织单词，展示学习进度" width="100%">
+<img src="docs/assets/galaxy.jpg" alt="단어 별자리 화면: 주제별로 단어를 모아 학습 진행 상황을 보여 줌" width="100%">
 
-19 个话题组成词汇星图。拖动旋转、滚动缩放，点击星星打开词卡；学习状态用不同亮度呈现。采用 WebGL2 渲染，不支持的设备提供降级显示。
+19개 주제가 하나의 단어 별자리를 이뤄요. 드래그해서 돌리고, 스크롤해서 확대하고, 별을 누르면 단어 카드가 열려요. 학습 상태는 별의 밝기로 보여 줘요. WebGL2로 그리고, 지원하지 않는 기기에서는 간단한 화면으로 대신 보여 줘요.
 
-<details>
-<summary><b>看 48 秒宣传片</b></summary>
+## 학습 방식
 
-<a href="docs/assets/launch.mp4"><img src="docs/assets/launch-preview.webp" alt="点击观看词光宣传片" width="100%"></a>
-
-[播放完整视频（含声音）](docs/assets/launch.mp4)
-
-</details>
-
-## 学习方式
-
-| 环节 | 你会做什么 |
+| 단계 | 하는 일 |
 | :--- | :--- |
-| **看见** | 每个词配一幅插画、中英释义、两条原创例句，以及搭配、词族和用法提示。 |
-| **听见** | 切换英音、美音，听日常例句朗读；部分词条另含第二条例句录音。 |
-| **想起** | 看义选词、看图补句、听音辨词、拼写，逐步练习主动回忆。 |
-| **复习** | FSRS 根据学习记录安排复习，目标记忆率可调。只有首次作答计入正确率。 |
-| **积累** | 星图展示学习进度；打字练习独立统计；支持导出和恢复本地进度。 |
+| **보기** | 단어마다 일러스트 한 장, 영어·한국어 뜻, 오리지널 예문 두 개, 자주 쓰는 표현, 파생어, 팁이 있어요. |
+| **듣기** | 영국·미국 발음을 바꿔 가며 듣고, 일상 예문 읽어 주기를 들어요. 일부 단어는 두 번째 예문 녹음도 있어요. |
+| **떠올리기** | 뜻 보고 단어 고르기, 그림 보고 빈칸 채우기, 듣고 단어 고르기, 철자 쓰기로 능동적으로 떠올려요. |
+| **복습** | FSRS가 학습 기록에 맞춰 복습 시점을 잡아 줘요. 목표 기억률은 조절할 수 있고, 정답률에는 첫 번째 답만 들어가요. |
+| **쌓기** | 별자리 지도로 진행 상황을 보고, 타자 연습은 따로 기록돼요. 학습 기록을 내보내고 복원할 수 있어요. |
 
-**本地优先。** 无需注册；看过的词条与媒体可缓存供离线使用。换设备前，请先导出进度备份。
+**내 기기 우선.** 가입이 필요 없고, 본 단어와 미디어는 캐시에 저장되어 오프라인에서도 볼 수 있어요. 기기를 바꾸기 전에는 학습 기록을 먼저 내보내 주세요.
 
 <details>
-<summary><b>听发音、例句与环境声样本</b></summary>
+<summary><b>발음과 예문 녹음 들어 보기</b></summary>
 
-
-
-拿 *abandon* 举例，点开就能听（在线播放）：
+*abandon*을 예로 들면 다음과 같아요.
 
 | | |
 |---|---|
-| 🇬🇧 英音 | [abandon /əˈbændən/](https://0xlei.tech/words/atlas/audio/uk/abandon.mp3) |
-| 🇺🇸 美音 | [abandon /əˈbændən/](https://0xlei.tech/words/atlas/audio/us/abandon.mp3) |
-| 📖 例句朗读 | [We had to abandon our car in the snow.](https://0xlei.tech/words/atlas/audio/ex/abandon.mp3) |
+| 🇬🇧 영국 발음 | [abandon /əˈbændən/](public/atlas/audio/uk/abandon.mp3) |
+| 🇺🇸 미국 발음 | [abandon /əˈbændən/](public/atlas/audio/us/abandon.mp3) |
+| 📖 예문 읽어 주기 | [We had to abandon our car in the snow.](public/atlas/audio/ex/abandon.mp3) |
 
-全部 7,298 个词都有英音、美音和例句朗读，还有 1,011 个重点词的第二条例句也配了朗读。
+단어 7,298개 모두 영국·미국 발음과 예문 녹음이 있고, 중요 단어 1,011개는 두 번째 예문 녹음도 있어요.
 
-### 环境声与交互声音
+배경음 7가지(별밤 음악, 비 오는 도서관, 새벽 바닷가, 숲속의 아침, 밤의 벽난로, 항해하는 선실, 조용한 카페)와 정답·오답·카드 넘김·연속 정답 같은 효과음도 들어 있어요. 단어를 읽어 줄 때는 배경음이 자동으로 작아져요.
 
-| | |
-|---|---|
-| 🎙 **开屏配音** | [「欢迎打开雅思大门」](https://0xlei.tech/words/sfx/splash-voice.mp3)：星尘汇聚成“词光”，大门打开 |
-| 🌌 **星图配音** | [「这是你的词汇星图。每学会一个词，就点亮一颗星。」](https://0xlei.tech/words/sfx/voice-galaxy-hello.mp3) |
-| 🎵 **星空音乐** | [一段可无缝循环的原创配乐](https://0xlei.tech/words/sfx/amb-stars.mp3)，默认陪你背词 |
-| 🌧 **6 段环境声** | [雨天图书馆](https://0xlei.tech/words/sfx/amb-rain.mp3) · [清晨海岸](https://0xlei.tech/words/sfx/amb-sea.mp3) · [林间早晨](https://0xlei.tech/words/sfx/amb-forest.mp3) · [夜晚壁炉](https://0xlei.tech/words/sfx/amb-fire.mp3) · [远航船舱](https://0xlei.tech/words/sfx/amb-voyage.mp3) · [安静咖啡馆](https://0xlei.tech/words/sfx/amb-cafe.mp3) |
-| ✨ **界面音效** | 答对、答错、翻卡、打字、连胜、点亮星星……每个操作都有自己的声音；读单词时背景音会自动压低 |
-
-全部素材都在仓库里：插画在 `public/atlas/img/`，录音在 `public/atlas/audio/`，这两类按 CC BY 4.0 开放；界面声音和配乐在 `public/sfx/`，随应用一起提供。
-
+일러스트는 `public/atlas/img/`, 녹음은 `public/atlas/audio/`에 있고 CC BY 4.0으로 공개돼요. 화면 효과음과 배경음은 `public/sfx/`에 있으며 앱과 함께 제공돼요.
 
 </details>
 
-## 本地运行
+## 로컬에서 실행하기
 
-需要 **Node.js 20+** 和 npm。仓库含完整图片与录音，首次下载可能较久。
+**Node.js 20 이상**과 npm이 필요해요. 이미지와 녹음이 모두 들어 있어서 처음 내려받는 데 시간이 걸릴 수 있어요.
 
 ```bash
-git clone --depth 1 https://github.com/designfuchen/word-atlas.git
-cd word-atlas
+git clone --depth 1 https://github.com/gyumin0405/word-atlas-korean.git
+cd word-atlas-korean
 npm ci
 npm run dev
 ```
 
-打开 **http://localhost:5188**。
+**http://localhost:5188**을 열면 돼요.
 
 ```bash
-npm test             # 单元测试
-npm run check:atlas  # 词库结构与媒体校验
-npm run build        # 构建到 dist/
+npm test             # 단위 테스트
+npm run check:atlas  # 단어 데이터 구조와 미디어 검사
+npm run build        # dist/로 빌드
 ```
 
-子路径部署：`ATLAS_BASE=/words/ npm run build`。完整说明见 [部署文档](docs/deployment.md)。
+하위 경로에 배포하려면 `ATLAS_BASE=/words/ npm run build`처럼 빌드해요. 자세한 내용은 [배포 문서](docs/deployment.md)를 보세요.
 
-**技术栈**：React 19 · TypeScript · Vite · ts-fsrs · WebGL2
+**기술 스택:** React 19 · TypeScript · Vite · ts-fsrs · WebGL2
 
-## 开放数据
+## 공개 데이터
 
-不仅可以直接使用应用，也可以把词库用于自己的学习工具、Anki 牌组或研究项目。
+앱으로 쓰는 것 말고도, 단어 데이터를 나만의 학습 도구나 Anki 덱, 연구에 쓸 수 있어요.
 
-| 资源 | 开源版内容 | 入口 |
+| 자료 | 내용 | 위치 |
 | :--- | :--- | :--- |
-| 词条 | **7,298** 条，CEFR A1–C2、19 个话题 | [JSON](data/word-atlas.json) · [CSV](data/word-atlas.csv) |
-| 例句 | **14,596** 条，日常与雅思语境，附中文翻译 | [字段说明](docs/dataset.md) |
-| 插画 | **7,298** 幅，512 px WebP，另有缩略图 | [图片目录](public/atlas/img/) |
-| 录音 | **22,905** 段，英音、美音与例句朗读 | [音频目录](public/atlas/audio/) |
+| 단어 | **7,298**개, CEFR A1–C2, 주제 19개 | [JSON](data/word-atlas.json) · [CSV](data/word-atlas.csv) |
+| 예문 | **14,596**개, 일상·IELTS 문맥, 한국어 번역 포함 | [필드 설명](docs/dataset.md) |
+| 일러스트 | **7,298**장, 512px WebP와 썸네일 | [이미지 폴더](public/atlas/img/) |
+| 녹음 | **22,905**개, 영국·미국 발음과 예문 읽어 주기 | [오디오 폴더](public/atlas/audio/) |
 
 ```python
 import json
@@ -158,7 +124,9 @@ b2_environment = [w for w in words if w["cefr"] == "B2" and w["topic"] == "envir
 ```
 
 <details>
-<summary><b>查看一条词条的数据结构</b></summary>
+<summary><b>단어 항목 하나의 데이터 구조</b></summary>
+
+필드 이름은 원본 앱과 호환되도록 `zh`를 그대로 쓰지만, 내용은 한국어예요. CSV에서는 `meanings_ko`, `example1_ko`처럼 열 이름을 바꿨어요.
 
 ```json
 {
@@ -166,14 +134,14 @@ b2_environment = [w for w in words if w["cefr"] == "B2" and w["topic"] == "envir
   "w": "principle",
   "uk": "/ˈprɪnsəpəl/",
   "us": "/ˈprɪnsəpəl/",
-  "senses": [{ "pos": "n.", "zh": "原则；行为准则", "en": "A belief or rule that guides decisions and behaviour." }],
+  "senses": [{ "pos": "n.", "zh": "원칙, 신념", "en": "A belief or rule that guides decisions and behaviour." }],
   "ex": [
-    { "en": "I refused the extra money as a matter of principle.", "zh": "出于原则，我拒绝了那笔额外的钱。" },
-    { "en": "The principle of equal opportunity should guide policies designed to improve access to higher education.", "zh": "…" }
+    { "en": "I refused the extra money as a matter of principle.", "zh": "나는 원칙의 문제라서 추가 금액을 거절했다." },
+    { "en": "The principle of equal opportunity should guide policies designed to improve access to higher education.", "zh": "기회 균등의 원칙은 고등 교육 접근성을 높이기 위한 정책의 지침이 되어야 한다." }
   ],
-  "col": ["in principle｜原则上", "basic principle｜基本原则"],
+  "col": ["basic principle｜기본 원칙", "in principle｜원칙적으로"],
   "fam": ["principled (adj.)"],
-  "tip": "principle 是原则；principal 是校长、主要的。",
+  "tip": "principal(주요한, 교장)과 철자·뜻을 혼동하지 않도록 주의하자.",
   "cefr": "B2",
   "topic": "thinking"
 }
@@ -181,30 +149,29 @@ b2_environment = [w for w in words if w["cefr"] == "B2" and w["topic"] == "envir
 
 </details>
 
-### 内容来源与局限
+### 콘텐츠 출처와 한계
 
-释义、例句、插画和录音为本项目生成：文字与插画使用生成式 AI，语音使用 ElevenLabs。内容经过自动结构与一致性校验，**尚未逐条人工审校**，可能出现释义、例句、插画或发音错误。它不是官方雅思词表，也不承诺提分。
+원본의 뜻, 예문, 일러스트, 녹음은 원 프로젝트에서 만든 것이에요. 글과 그림은 생성형 AI로, 음성은 ElevenLabs로 만들었어요. 한국어 번역도 AI(Claude)로 했어요. 구조와 일관성은 자동으로 검사했지만 **항목마다 사람이 검토하지는 않았어요.** 뜻, 예문, 일러스트, 발음에 오류가 있을 수 있어요. IELTS 공식 단어 목록이 아니며 점수 향상을 약속하지도 않아요.
 
-[内容生成流程](docs/pipeline.md) · [记忆模型](docs/learning-model.md) · [生成脚本](scripts/atlas/)
+[콘텐츠 생성 과정](docs/pipeline.md) · [기억 모델](docs/learning-model.md) · [생성 스크립트](scripts/atlas/) · [한국어 번역 스크립트](scripts/ko/)
 
-## 参与贡献
+## 기여하기
 
-发现问题时，请附上**词条 ID、复现步骤和预期结果**。内容纠错如有词典或其他可靠依据，也请一并提供。
+문제를 알려 주실 때는 **단어 ID, 재현 방법, 기대한 결과**를 함께 적어 주세요. 내용을 고칠 때 사전 같은 근거가 있으면 같이 알려 주세요.
 
-- [报告问题](https://github.com/designfuchen/word-atlas/issues/new/choose)：词条纠错、界面问题或使用建议。
-- [贡献指南](CONTRIBUTING.md)：数据同步、代码规范和提交前检查。
-- [安全政策](SECURITY.md)：安全问题的反馈方式。
+- **한국어 번역·화면 문구 오류:** [이 저장소에 Issue 남기기](https://github.com/gyumin0405/word-atlas-korean/issues/new)
+- **영어 원문·일러스트·발음 오류:** 원본 [designfuchen/word-atlas](https://github.com/designfuchen/word-atlas/issues)에 알려 주세요.
+- [기여 안내](CONTRIBUTING.md) · [보안 정책](SECURITY.md)
 
-## 授权
+## 라이선스
 
-| 范围 | 许可 |
+| 범위 | 라이선스 |
 | :--- | :--- |
-| 应用代码 | [MIT](LICENSE) |
-| 词库文本、插画与词条录音 | [CC BY 4.0](CONTENT_LICENSE.md)，署名 Word Atlas contributors（词光） |
-| 第三方依赖与字体 | 遵循各自许可，详见相应文件 |
+| 앱 코드 | [MIT](LICENSE) |
+| 단어 데이터, 일러스트, 녹음 | [CC BY 4.0](CONTENT_LICENSE.md), 저작자 표시 Word Atlas contributors(词光) |
+| 한국어 번역과 수정 | [CC BY 4.0](CONTENT_LICENSE.md), 저작자 표시 gyumin0405 |
+| 외부 의존성과 글꼴 | 각자의 라이선스를 따라요 |
 
 ---
 
-由 [@designfuchen](https://github.com/designfuchen) 制作。产品进展与制作过程见 [X · @yangleiocx3](https://x.com/yangleiocx3)。
-
-如果词光对你有用，欢迎 Star，或把它分享给正在学英语的朋友。
+원작 Word Atlas는 [@designfuchen](https://github.com/designfuchen)이 만들었어요.
