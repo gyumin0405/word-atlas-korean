@@ -115,7 +115,11 @@ export function Today() {
           ) : (
             <>
               <p className="eyebrow eyebrow-light">오늘 학습 완료</p>
-              <h2>오늘의 별이 모두 밝혀졌어요.</h2>
+              <h2 className="journey-done">
+                오늘의 별이
+                <br />
+                모두 밝혀졌어요.
+              </h2>
               <p className="journey-lede">기억에는 약간의 여백이 필요해요. 조금 더 가고 싶다면 그것도 좋아요.</p>
             </>
           )}

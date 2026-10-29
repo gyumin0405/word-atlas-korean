@@ -1202,6 +1202,10 @@ code {
     position: sticky;
     top: 0;
   }
+  /* In a lesson, stop below the sticky progress bar instead of sliding under it. */
+  .intro .entry-art {
+    top: 80px;
+  }
 }
 
 /* ---------- sheet ---------- */
@@ -1523,6 +1527,11 @@ code {
   font-variation-settings: "opsz" 120;
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25);
   text-wrap: balance;
+  word-break: keep-all;
+}
+.journey h2.journey-done {
+  font-size: clamp(28px, 4.6vw, 44px);
+  line-height: 1.15;
 }
 .journey h2 b {
   font-weight: 700;
