@@ -1,6 +1,6 @@
 # 별빛 단어장 · Word Atlas 한국어판
 
-[Word Atlas(词光)](https://github.com/designfuchen/word-atlas)를 한국어 학습자용으로 옮긴 비공식 한국어판입니다. 
+[Word Atlas(词光)](https://github.com/designfuchen/word-atlas)를 한국어 학습자용으로 옮긴 IELTS 단어장입니다. 
 
 - **원본:** Word Atlas contributors — 코드 [MIT](LICENSE), 단어 데이터·일러스트·녹음 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - **바꾼 내용:** 단어 7,298개의 뜻·예문 번역·연어·팁·주의 문구와 앱 화면을 한국어로 옮겼습니다. 번역은 Claude Opus 5.5로 했고 항목마다 사람이 검토하지는 않았습니다. 자세한 내용과 한국어 번역의 라이선스(CC BY 4.0)는 [CONTENT_LICENSE.md](CONTENT_LICENSE.md)에 있습니다.
